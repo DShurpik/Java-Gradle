@@ -17,3 +17,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.register('smoke', Test) {
+    useJUnitPlatform {
+        includeTags 'smoke'
+    }
+}
+
+tasks.register('regression', Test) {
+    useJUnitPlatform {
+        includeTags 'regression'
+    }
+}

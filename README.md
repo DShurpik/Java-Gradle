@@ -7,3 +7,5 @@ gradle test --tests *SomeTestMethod – запуск конкретного ме
 Фильтрация тестов
 • includeTags 'smoke' – запуск тестов с тегом smoke
 • excludeTags 'defect' – исключение тестов с тегом defect
+
+gradle clean smoke запуск тестов с тегом smoke (можно использовать несколько тегов)
