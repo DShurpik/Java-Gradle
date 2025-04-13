@@ -20,3 +20,6 @@ gradle clean env -Denv=test
 Запуск теста через owner, только метода testOwner с проперти test
 Можно использовать другие методы devOwner, prodOwner с проперти dev, prod
 gradle clean test --tests "OwnerTest.testOwner" -Denv=test
+
+Добавил Allure report, исп. команду для создания отчета
+allure generate build/allure-results --clean -o build/allure-report
