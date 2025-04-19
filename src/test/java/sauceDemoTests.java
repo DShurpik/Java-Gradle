@@ -71,4 +71,24 @@ public class sauceDemoTests extends BaseTest {
 
         assertTrue(mainPage.isMainPageDisplayed(), "Main page is not displayed");
     }
+
+    @DisplayName("Open bucket test through components")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("John Doe")
+    @TmsLink("https://example.com/testcase/4")
+    @Tag("smoke")
+    @Test
+    public void openBucketTest() {
+        LoginPage loginPage = new LoginPage();
+        MainPage mainPage = new MainPage();
+
+        loginPage.open(PropertyReader.getRequiredProperty("baseUrl"));
+        loginPage.enterUserName(PropertyReader.getRequiredProperty("userName"));
+        loginPage.enterPassword(PropertyReader.getRequiredProperty("password"));
+        loginPage.clickLoginButton();
+
+        mainPage.getHeaderComponents().openBucket();
+
+        assertTrue(mainPage.getHeaderComponents().getLogo().isDisplayed(), "Main page is not displayed");
+    }
 }
