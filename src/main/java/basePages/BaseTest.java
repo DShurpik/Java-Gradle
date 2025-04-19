@@ -1,19 +1,23 @@
+package basePages;
+
 import org.junit.jupiter.api.*;
+
+import static driver.SingletoneDriver.closeDriver;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BaseTest {
 
+
+
     @BeforeEach
     public void setUp() {
-        // Code to set up the test environment, such as initializing WebDriver
-        System.out.println("Setting up the test environment...");
+
     }
 
     @AfterEach
     public void tearDown() {
-        // Code to clean up after each test, such as closing the browser
-        System.out.println("Cleaning up after the test...");
+        closeDriver();
     }
 
     @BeforeAll
