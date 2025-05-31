@@ -1,34 +1,40 @@
 package dto;
 
+// Паттерн билдер
 public class User {
-    private String firstName;
-    private String lastName;
-    private int age;
+    private String username;
+    private String password;
 
-    public User(String name, String lastName, int age) {
-        this.firstName = name;
-        this.lastName = lastName;
-        this.age = age;
+    private User(UserBuilder builder) {
+        this.username = builder.username;
+        this.password = builder.password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPassword() {
+        return password;
     }
 
-    public int getAge() {
-        return age;
+    public static class UserBuilder {
+        private String username;
+        private String password;
+
+        public UserBuilder setUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public UserBuilder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }

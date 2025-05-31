@@ -1,15 +1,14 @@
 package sauceDemo;
 
 import basePages.BasePage;
-import dto.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage {
+public class LoginPageChain extends BasePage {
 
-    public LoginPage() {
+    public LoginPageChain() {
         PageFactory.initElements(driver, this);
     }
 
@@ -23,24 +22,26 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
 
     @Step("Enter username: {0}")
-    public void enterUserName(String userName) {
+    public LoginPageChain enterUserName(String userName) {
         userNameField.sendKeys(userName);
+        return this;
+    }
+
+    @Step("Open URL: {0}")
+    public LoginPageChain openUrl(String url) {
+        driver.get(url);
+        return this;
     }
 
     @Step("Enter password: {0}")
-    public void enterPassword(String password) {
+    public LoginPageChain enterPassword(String password) {
         passwordField.sendKeys(password);
+        return this;
     }
 
     @Step("Click on login button")
-    public void clickLoginButton() {
+    public LoginPageChain clickLoginButton() {
         loginButton.click();
-    }
-
-    @Step("Fill login form with username: {0} and password: {1} and builder")
-    public void fillLoginForm(User user) {
-        enterUserName(user.getUsername());
-        enterPassword(user.getPassword());
-        clickLoginButton();
+        return this;
     }
 }
