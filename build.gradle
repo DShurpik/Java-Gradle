@@ -23,6 +23,9 @@ dependencies {
     implementation  'io.qameta.allure:allure-assertj:2.29.1'
     implementation  'io.qameta.allure:allure-rest-assured:2.29.1'
     implementation  'io.qameta.allure:allure-java-commons:2.29.1'
+    implementation 'io.rest-assured:rest-assured:5.5.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+    implementation 'org.assertj:assertj-core:3.25.3'
 }
 
 test {
@@ -34,5 +37,11 @@ test {
 tasks.register('smoke', Test) {
     useJUnitPlatform {
         includeTags 'smoke'
+    }
+}
+
+tasks.register('api', Test) {
+    useJUnitPlatform {
+        includeTags 'api'
     }
 }
